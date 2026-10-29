@@ -1,17 +1,17 @@
-# Sample Hardhat 3 Project (`node:test` and `viem`)
+# Proyecto de ejemplo Hardhat 3 (`node:test` y `viem`)
 
-This project showcases a Hardhat 3 project using the native Node.js test runner (`node:test`) and the `viem` library for Ethereum interactions.
+Este proyecto es un ejemplo de Hardhat 3 que usa el ejecutor de pruebas nativo de Node.js (`node:test`) y la librería `viem` para interactuar con Ethereum.
 
-To learn more about Hardhat 3, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3](https://hardhat.org/hardhat3-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+Para aprender más sobre Hardhat 3, visita la [guía de inicio](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). Para compartir comentarios, únete al grupo de Telegram de [Hardhat 3](https://hardhat.org/hardhat3-telegram-group) o [abre un issue](https://github.com/NomicFoundation/hardhat/issues/new) en el repositorio de Hardhat en GitHub.
 
-## Project Overview
+## Descripción del proyecto
 
-This example project includes:
+Este proyecto de ejemplo incluye:
 
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using [`node:test`](https://nodejs.org/api/test.html), the new Node.js native test runner, and [`viem`](https://viem.sh/).
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
+- Un archivo de configuración de Hardhat sencillo.
+- Pruebas unitarias en Solidity compatibles con Foundry.
+- Pruebas de integración en TypeScript usando [`node:test`](https://nodejs.org/api/test.html), el ejecutor de pruebas nativo de Node.js, y [`viem`](https://viem.sh/).
+- Ejemplos de cómo conectarse a distintos tipos de redes, incluida una simulación local de OP mainnet.
 
 ## Cómo empezar
 
@@ -57,44 +57,48 @@ git push -u origin main
 
 > Nunca subir llaves privadas, frases semilla ni API keys. Esos valores van en `.env` (ignorado por `.gitignore`) o en `npx hardhat keystore`.
 
-## Usage
+## Uso
 
-### Running Tests
+### Ejecutar las pruebas
 
-To run all the tests in the project, execute the following command:
+Para ejecutar todas las pruebas del proyecto:
 
 ```shell
 npx hardhat test
 ```
 
-You can also selectively run the Solidity or `node:test` tests:
+También puedes ejecutar solo las pruebas de Solidity o solo las de `node:test`:
 
 ```shell
 npx hardhat test solidity
 npx hardhat test nodejs
 ```
 
-### Make a deployment to Sepolia
+### Desplegar en Sepolia
 
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
+El proyecto incluye un módulo de Ignition de ejemplo para desplegar el contrato. Puedes desplegarlo en una cadena simulada localmente o en Sepolia.
 
-To run the deployment to a local chain:
+Para desplegar en una cadena local:
 
 ```shell
 npx hardhat ignition deploy ignition/modules/Counter.ts
 ```
 
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
+Para desplegar en Sepolia necesitas una cuenta con fondos para pagar la transacción. La configuración de Hardhat usa dos variables de configuración:
 
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
+- `SEPOLIA_RPC_URL`: la URL del nodo RPC de Sepolia (por ejemplo, de Alchemy o Infura).
+- `SEPOLIA_PRIVATE_KEY`: la llave privada de la cuenta que quieres usar.
 
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
+Puedes definirlas con el plugin `hardhat-keystore` o como variables de entorno.
+
+Para definirlas con `hardhat-keystore`:
 
 ```shell
+npx hardhat keystore set SEPOLIA_RPC_URL
 npx hardhat keystore set SEPOLIA_PRIVATE_KEY
 ```
 
-After setting the variable, you can run the deployment with the Sepolia network:
+Después de definir las variables, ejecuta el despliegue en la red Sepolia:
 
 ```shell
 npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
