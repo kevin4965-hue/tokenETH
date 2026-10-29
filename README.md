@@ -13,6 +13,50 @@ This example project includes:
 - TypeScript integration tests using [`node:test`](https://nodejs.org/api/test.html), the new Node.js native test runner, and [`viem`](https://viem.sh/).
 - Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
 
+## Cómo empezar
+
+### 1. Requisitos
+
+- [Node.js](https://nodejs.org/) (incluye `npm`)
+- [Git](https://git-scm.com/)
+
+### 2. Crear el proyecto Hardhat
+
+```shell
+npm init -y
+npm install --save-dev hardhat
+npx hardhat --init
+```
+
+En el asistente de `--init` se eligió:
+
+- Carpeta: `.` (la carpeta actual)
+- Tipo de proyecto: TypeScript con Node Test Runner y Viem
+- Convertir `package.json` a ESM: sí
+- Instalar dependencias: sí
+
+### 3. Compilar y probar
+
+```shell
+npx hardhat compile
+npx hardhat test
+```
+
+### 4. Subir el proyecto a GitHub
+
+Crear primero el repositorio vacío en GitHub (sin README ni `.gitignore`) y luego:
+
+```shell
+git init
+git add .
+git commit -m "Proyecto inicial Hardhat 3"
+git branch -M main
+git remote add origin https://kevin4965-hue@github.com/kevin4965-hue/tokenETH.git
+git push -u origin main
+```
+
+> Nunca subir llaves privadas, frases semilla ni API keys. Esos valores van en `.env` (ignorado por `.gitignore`) o en `npx hardhat keystore`.
+
 ## Usage
 
 ### Running Tests
